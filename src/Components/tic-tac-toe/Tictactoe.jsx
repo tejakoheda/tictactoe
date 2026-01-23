@@ -4,6 +4,7 @@ import cross from "../Assets/cross.png";
 import { useRef, useState } from "react";
 
 let data = ["", "", "", "", "", "", "", "", ""];
+// X for cross and O for circle
 
 const Tictactoe = () => {
   let [count, setCount] = useState(0);
