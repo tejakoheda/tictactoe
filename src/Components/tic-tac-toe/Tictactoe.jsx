@@ -12,14 +12,16 @@ const Tictactoe = () => {
   let titleRef = useRef(null);
 
   const toggle = (e, num) => {
-    if (lock) return 0;
+    if (lock) {
+      return 0;
+    }
 
     if (count % 2 === 0) {
-      e.target.innerHTML = `<img src=${cross} className="icon" />`;
+      e.target.innerHTML = `<img src='${cross}'/>`;
       data[num] = "X";
       setCount(++count);
     } else {
-      e.target.innerHTML = `<img src=${circle} className="icon" />`;
+      e.target.innerHTML = `<img src='${circle}'/>`;
       data[num] = "O";
       setCount(++count);
     }
@@ -28,31 +30,31 @@ const Tictactoe = () => {
 
   const checkWinner = () => {
     if (data[0] === data[1] && data[1] === data[2] && data[2] !== "") {
-      won(data);
+      won(data[2]);
     } else if (data[3] === data[4] && data[4] === data[5] && data[5] !== "") {
-      won(data);
+      won(data[5]);
     } else if (data[6] === data[7] && data[7] === data[8] && data[8] !== "") {
-      won(data);
+      won(data[8]);
     } else if (data[0] === data[3] && data[3] === data[6] && data[6] !== "") {
-      won(data);
+      won(data[0]);
     } else if (data[1] === data[4] && data[4] === data[7] && data[7] !== "") {
-      won(data);
+      won(data[1]);
     } else if (data[2] === data[5] && data[5] === data[8] && data[8] !== "") {
-      won(data);
+      won(data[2]);
     } else if (data[0] === data[4] && data[4] === data[8] && data[8] !== "") {
-      won(data);
+      won(data[4]);
     } else if (data[2] === data[4] && data[4] === data[6] && data[6] !== "") {
-      won(data);
+      won(data[2]);
     }
   };
 
   const won = (winner) => {
-    setLock(true);
     if (winner === "X") {
-      titleRef.current.innerHTML = `Congratulations! Player \"<img src=${cross} className="icon" />\" Won`;
+      titleRef.current.innerHTML = `Congratulations! Player \"<img src=${cross}  />\" Won`;
     } else {
-      titleRef.current.innerHTML = `Congratulations! Player \"<img src=${circle} className="icon" />\" Won`;
+      titleRef.current.innerHTML = `Congratulations! Player \"<img src=${circle} />\" Won`;
     }
+    setLock(true);
   };
 
   const resetGame = () => {
